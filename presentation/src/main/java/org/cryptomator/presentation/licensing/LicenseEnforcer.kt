@@ -8,7 +8,6 @@ import org.cryptomator.presentation.R
 import org.cryptomator.presentation.intent.Intents
 import org.cryptomator.presentation.model.VaultModel
 import org.cryptomator.presentation.presenter.ContextHolder
-import org.cryptomator.util.FlavorConfig
 import org.cryptomator.util.SharedPreferencesHandler
 import java.text.DateFormat
 import java.util.Date
@@ -40,10 +39,7 @@ class LicenseEnforcer @Inject constructor(private val sharedPreferencesHandler: 
 		return hasPaidLicense() || hasActiveTrial()
 	}
 
-	fun hasPaidLicense() =
-		FlavorConfig.isPremiumFlavor ||
-			sharedPreferencesHandler.licenseToken().isNotEmpty() ||
-			sharedPreferencesHandler.hasRunningSubscription()
+	fun hasPaidLicense() = true
 
 	fun startTrial() {
 		if (sharedPreferencesHandler.trialExpirationDate() > 0) {
